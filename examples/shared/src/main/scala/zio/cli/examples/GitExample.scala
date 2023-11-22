@@ -3,6 +3,7 @@ package zio.cli.examples
 import zio.Console.printLine
 import zio.cli.HelpDoc.Span.text
 import zio.cli._
+import zio.Runtime.default.unsafeRun
 
 import java.nio.file.{Path => JPath}
 
@@ -79,6 +80,5 @@ object GitExample extends ZIOCliDefault {
 }
 
 object Example2 extends scala.App {
-
-  println(GitExample.git.helpDoc)
+  unsafeRun(GitExample.cliApp.run(List.empty))
 }
